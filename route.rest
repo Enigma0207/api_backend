@@ -1,0 +1,33 @@
+###
+GET http://localhost/api_backend
+
+###
+POST http://localhost/api_backend/
+
+//donnee du type json
+{
+    "pseudo":"enigma",
+    "password":"lepoles2023",
+    "action": "login"
+}
+###
+POST http://localhost/api_backend/
+
+//donnee du type json
+{
+    "pseudo":"badboy",
+    "firstname":"alin2",
+    "lastname":"mansita",
+    "password":"lepoles2023",
+    "action": "register"
+}
+###
+POST http://localhost/api_backend/
+
+//donnee du type json
+{
+    "expeditor":"5",
+    "receiver":"2",
+    "message":"contenu du message",
+    "action": "send message"
+}
