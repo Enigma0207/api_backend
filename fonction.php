@@ -4,7 +4,7 @@ function dbConnect(){
     $conn=null;
     try {
          $conn=new PDO("mysql:host=localhost;dbname=api_db", "root","");
-    } catch (PDOExeption $e) {
+    } catch (PDOException $e) {
      $conn= $e->getMessage();
     }
     return $conn;
@@ -30,7 +30,7 @@ function register($firstname, $lastname, $password,$pseudo){
             "status" => 201,
             "message" => "everything good",
         ]);
-    } catch (PDOExexeption $e) {
+    } catch (PDOException $e) {
         echo json_encode([
             "status" => 500,
             "message" => "internal server error",
@@ -50,8 +50,9 @@ function login ($pseudo,$password){
         $request->execute(array($pseudo));
         // recuperer la reponse de la requete
         $user1=$request->fetch(PDO::FETCH_ASSOC);
-        // verifier si l'utilisateur existe
+        // verifier si l'utilisateur n'existe
         if(empty($user1)){
+            // retourner à l'utilisateur ceci
             echo json_encode([
                 "status" =>404,
                 "message" =>"user not found"
@@ -59,6 +60,7 @@ function login ($pseudo,$password){
         }else{
             // verifier si le password est correct
             if(password_verify($password,$user1['password'])){
+                // si cest correct envoi a l'utilisateur ceci
                 echo json_encode([
                     "status" =>200,
                     "message" =>"felicitation...",
@@ -66,6 +68,7 @@ function login ($pseudo,$password){
                 ]);
             }
             else {
+                // si me mdp est incorrect afficher ceci
                  echo json_encode([
                     "status" =>401,
                     "message" =>"passeword incorrect..."
@@ -81,6 +84,8 @@ function login ($pseudo,$password){
         ]);
     }
 }
+
+
 
 // fonction pour envoyer des message
 function sendMessage($expeditor, $receiver, $message){
@@ -112,12 +117,12 @@ function getListUser(){
       try{
       $request->execute();
     //   recupere la liste
-    $listeUsers=  $request->fetchAll(PDO::FETCH_ASSOC);
+    $listeUsers =  $request->fetchAll(PDO::FETCH_ASSOC);
      
     echo json_encode([
             "status"=>200,
             "message"=>"voici la liste des utilisateurs",
-            "data"=>$listUsers
+            "data"=>$listeUsers
         ]);
       }catch(PDOException $e){
       echo json_encode([

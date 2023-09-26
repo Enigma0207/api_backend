@@ -1,5 +1,6 @@
 ###
-GET http://localhost/api_backend
+# nous permet d'afficher ce qui suit apres http://localhost/api_backend/, ici on veut recuperer la liste des utilisateur
+GET http://localhost/api_backend/getuserlist/
 
 ###
 POST http://localhost/api_backend/
