@@ -27,8 +27,19 @@ POST http://localhost/api_backend/
 
 //donnee du type json
 {
+    "expeditor":8,
+    "receiver":2,
+    "message":"kjhj?",
+    "action": "send message"
+}
+
+###
+
+GET  http://localhost/api_backend/geListMessage/2/3
+
+//get pck on va recuper la liste Et on choisi 2 et 3 comme identifiant du deuxiem utilisateur et du 3iemm cest au choix
+{
     "expeditor":"5",
     "receiver":"2",
-    "message":"contenu du message",
-    "action": "send message"
+   
 }

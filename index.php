@@ -19,9 +19,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET"){
 //        "data"=>$url
 //    ]);
     if($action == "getuserlist"){
-     getListUser();
-           }
-} else {
+
+        getListUser();
+
+    } else if ($action == "geListMessage") {
+        // par rapport a la fonction message list dans api
+              getListMessage($url[2], $url[3]);
+    }else {
+        echo json_encode([
+        "status" => 404,
+        "message" => "not found",
+    
+        ]);
+    }
+  } else {
 //      echo json_encode([
 //        "test" => "ok",
     
