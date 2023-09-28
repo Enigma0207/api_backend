@@ -150,7 +150,7 @@ function getListMessage ($expeditor, $receiver){
            
         ]);
 
-    } catch (PODException  $e) {
+    } catch (PDOException  $e) {
        echo json_encode([
             "status"=>500,
             "message"=>$e->getMessage()
